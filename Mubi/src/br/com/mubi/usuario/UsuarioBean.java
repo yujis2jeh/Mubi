@@ -5,14 +5,11 @@ import java.util.Set;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import br.com.mubi.usuario.Usuario;
-import br.com.mubi.usuario.UsuarioRN;
-
 @ManagedBean(name = "usuarioBean")
-@RequestScoped
+@SessionScoped
 public class UsuarioBean {
 	private Usuario usuario = new Usuario();
 	private String confirmaSenha;
@@ -23,7 +20,7 @@ public class UsuarioBean {
 		this.destinoSalvar = "usuarioSucesso";
 		this.usuario = new Usuario();
 		this.usuario.setAtivo(true);
-		return "usuario";
+		return "cadastroUsuario";
 	}
 	
 	public String editar() {
