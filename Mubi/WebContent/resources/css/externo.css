@@ -1,0 +1,37 @@
+#logotipo {
+	width: 800px;
+	height: 125px;
+	background-image: url("#{resource['imagens:banner.png']}");
+	opacity: 0.65;
+}
+
+#principal {
+	padding-top: 20px;
+	width: 800px;
+	height: 515px;
+}
+
+#titulo {
+	font-size: 25px;
+	font-weight: bold;
+	height: 60px;
+	width: 800px;
+	text-align: center;
+	font-family: Arial;
+	color: #59595f;
+}
+
+#conteudo {
+	width: 800px;
+	height: 437px;
+}
+
+#rodape {
+	height: 18px;
+	width:800px;
+	text-align: center;
+	font-family: Arial;
+	color: graytext;	
+	font-size: 12px;
+	font-weight: bold;
+}

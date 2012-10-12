@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"	
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition>
+		<h:form>
+			<p:menu styleClass="menu">
+	            <p:menuitem value="Página Inicial" outcome="/restrito/principal.jsf" icon="ui-icon-home"/>  
+	            <p:menuitem value="Meus Filmes" outcome="/restrito/meusFilmes.jsf" icon="ui-icon-star"/> 
+	            <p:menuitem value="Incluir Filme" outcome="/restrito/incluirFilmes.jsf" icon="ui-icon-star"/>	             
+	            <p:menuitem value="Visualizar Relatório" outcome="/restrito/relatorio.jsf" icon="ui-icon-star"/> 	            
+	            <p:menuitem value="Editar Conta" outcome="/restrito/atualizacaoConta.jsf" icon="ui-icon-star"/>  	            
+	            <p:menuitem value="Sair" outcome="/publico/login.jsf" icon="ui-icon-close"/>  
+	    	</p:menu>
+	    </h:form>
+	</ui:composition>
+
+</html>

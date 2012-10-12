@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition template="/templates/estruturaInterna.xhtml">
+	<ui:define name="titulo"> Editar dados da conta</ui:define>
+	<ui:define name="conteudo">
+		<h:form id="atualizacaoForm">
+			<h:panelGrid columns="2" cellpadding="3" cellspacing="2" columnClasses="colunaLabel">
+											
+				<p:outputLabel for="nome"  value="Nome: " styleClass="labelBold" />
+				<p:inputText id="nome" styleClass="caixaTexto" />	
+				
+				<p:outputLabel for="dataNascimento"  value="Data de Nascimento: " styleClass="labelBold" />
+           		<p:inputMask id="dataNascimento" mask="99/99/9999" styleClass="caixaTextoMask" />
+				
+				<p:outputLabel for="email"  value="E-mail: " styleClass="labelBold" />
+				<p:inputText id="email" styleClass="caixaTexto" />	
+				
+				<p:outputLabel for="usuario" value="Usuário: " styleClass="labelBold" />
+				<p:inputText id="usuario" styleClass="caixaTexto" maxlength="" disabled="true" />	
+				
+				<p:outputLabel for="senha" value="Senha: " styleClass="labelBold" />
+				<p:password id="senha"  styleClass="caixaTexto" maxlength="8" />	
+				
+				<p:outputLabel for="confirmarSenha"  value="Confirmar senha: " styleClass="labelBold" />
+				<p:password id="confirmarSenha" styleClass="caixaTexto" maxlength="8" />	
+								
+			</h:panelGrid>
+			<br /><br />
+			<div style="width: 100%" align="center">
+				<h:panelGrid styleClass="gridBotoes" columns="2" cellspacing="2" cellpadding="5">
+					<p:commandButton id="btnVoltar" value="Voltar"
+						action="/restrito/principal.jsf" ajax="false" />
+					<p:commandButton id="btnSalvar" value="Salvar"
+						action="/publico/login.jsf" ajax="false" />
+				</h:panelGrid>	
+			</div>
+		</h:form>		
+	</ui:define>
+
+</ui:composition>
+
+</html>

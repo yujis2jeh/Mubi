@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition template="/templates/estruturaExterna.xhtml">
+	<ui:define name="titulo">Login</ui:define>
+	<ui:define name="conteudo">
+		<form id="form_login" method="post" action="/Mubi/restrito/principal.jsf">
+			<h:panelGrid styleClass="gridLogin" cellpadding="2">
+				<h:panelGrid columns="2">
+					<h:outputLabel styleClass="labelBold" value="Usuário: " />
+					<input type="text" id="usuario" name="j_username" class="caixaTexto" />					
+					
+					<h:outputLabel styleClass="labelBold" value="Senha: " />
+					<input type="password" id="senha" name="j_password" class="caixaTexto" />
+					
+				</h:panelGrid>
+								
+				<h:panelGrid columns="2" width="100%" styleClass="gridBotoes">
+					<h:outputLabel styleClass="labelBold" value="Mantenha-me conectado" />
+					<input type="checkbox" />
+				</h:panelGrid>
+				<br />
+				<h:panelGrid styleClass="gridBotoes" width="100%">
+					<input type="submit" value="Entrar"	class="ui-button" style="color: #59595F;">
+					</input>
+				</h:panelGrid>	
+			</h:panelGrid>	
+		</form>
+		<br />
+		<br />
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="0" cellspacing="3">
+				<h:outputText styleClass="labelBold" value="Se ainda não for cadastrado, " />
+				<h:commandLink id="link_registro" value="clique aqui"
+					action="/publico/cadastroUsuario.jsf" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>

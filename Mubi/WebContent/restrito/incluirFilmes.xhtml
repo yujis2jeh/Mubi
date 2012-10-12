@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="/templates/estruturaInterna.xhtml">
+		<ui:define name="menu" />
+		<ui:define name="titulo">Incluir Filme</ui:define>
+		<ui:define name="conteudo">
+			<h:form id="incluirFilmeForm" rendered="true">
+				<h:panelGrid columns="2" cellpadding="3" cellspacing="2" columnClasses="colunaLabel">
+					<p:outputLabel for="tituloBrasil" value="Título no Brasil:" styleClass="labelBold" />
+					<p:inputText id="tituloBrasil" maxlength="50" styleClass="caixaTexto" 
+						onkeyup="desabilitarBotaoCamposPreenchidos()"/>
+					
+					<p:outputLabel for="tituloOriginal" value="Título Original:" styleClass="labelBold" />
+					<p:inputText id="tituloOriginal" maxlength="50" styleClass="caixaTexto" />	
+					
+					<p:outputLabel for="ano" value="Ano de Lançamento:" styleClass="labelBold" />
+					<p:inputMask id="ano" mask="9999" autocomplete="true" styleClass="caixaTextoMask" />
+						        
+					<p:outputLabel for="duracao" value="Duração:" styleClass="labelBold" />
+					<p:inputMask id="duracao" mask="999" styleClass="caixaTextoMask" />
+										
+					<p:outputLabel for="classificacao" value="Classificação Etária:" styleClass="labelBold" />
+					<p:selectOneMenu id="classificacao" var="i" styleClass="combo">  
+			            <f:selectItem itemLabel="Selecione" itemValue="" /> 
+			            <f:selectItems value="#{filmeBean.imagens}" var="imagem" itemValue="#{imagem}" itemLabel="#{imagem.tipo}" />	            
+			            <p:column>				            	
+			           		<p:graphicImage library="imagens" name="#{i.imagem}" width="25" height="25" />
+			            </p:column>
+			            <p:column>
+			            	#{i.tipo}
+			            </p:column>				           
+			        </p:selectOneMenu> 
+												
+					<p:outputLabel for="estudio" value="Estúdio:" styleClass="labelBold" />
+					<p:inputText id="estudio" maxlength="30" styleClass="caixaTexto" />
+											
+					<p:outputLabel for="direcao" value="Direção:" styleClass="labelBold" />
+					<p:inputText id="direcao" maxlength="30" styleClass="caixaTexto" />		
+					
+				</h:panelGrid>
+				<br />
+				<br />
+				<div align="center" style="width:100%">
+					<h:panelGrid styleClass="gridBotoes" columns="2" cellspacing="2" cellpadding="5">
+						<p:commandButton id="btnVoltar" value="Voltar" styleClass="ui-button"
+							action="/restrito/principal.jsf" ajax="false" />							
+						<p:commandButton id="btnProximo" value="Próximo" styleClass="ui-button" 
+							action="#" ajax="false" widgetVar="proximo"  />
+					</h:panelGrid>	
+				</div>
+
+			</h:form>
+			<h:panelGrid rendered="false">
+				<h:form enctype="multipart/form-data">
+					<h:outputText value="Imagem da Capa:" styleClass="labelBold" />
+					<p:fileUpload id="capa" cancelLabel="Cancelar" uploadLabel="Enviar" label="Selecione"
+							allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="50000000" styleClass="upload" mode="simple"/>
+				</h:form>
+				<h:form id="continuaInclusaoForm">
+					<h:panelGrid columns="2" cellpadding="3" cellspacing="2" columnClasses="colunaLabel">
+						<p:outputLabel for="trailer" value="Trailer (Youtube):" styleClass="labelBold" />
+						<p:inputText id="trailer" maxlength="30" styleClass="caixaPesquisa" />
+							
+						
+						
+						<p:outputLabel for="sinopse" value="Sinopse:" styleClass="labelBold" />
+						<p:inputTextarea id="sinopse" maxlength="2000" counter="labelCounter" styleClass="campoTextarea" 
+								autoResize="false"  />
+						
+						<h:panelGroup></h:panelGroup>
+						
+						<h:panelGroup>
+							<p:outputLabel id="labelCounter" for="sinopse" styleClass="labelBold"  />		
+							<h:outputText value=" caracteres restantes." styleClass="labelBold" />	
+						</h:panelGroup>		
+					</h:panelGrid>
+					
+					<div align="center" style="width: 100%">
+						<h:panelGrid styleClass="gridBotoes" columns="2" cellspacing="2" cellpadding="5">
+							<p:commandButton id="btnVoltarInclusao" value="Voltar"
+								action="#" ajax="false" />							
+							<p:commandButton id="btnSalvar" value="Salvar" 
+								action="#" ajax="false" widgetVar="Salvar"  />
+						</h:panelGrid>	
+					</div>	
+				</h:form>
+			</h:panelGrid>
+		</ui:define>
+	</ui:composition>
+</html>

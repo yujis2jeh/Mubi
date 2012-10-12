@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="/templates/estruturaInterna.xhtml">
+		<ui:define name="menu" />
+		<ui:define name="conteudo">
+			<h:form id="principalForm">		
+				<h:panelGrid columns="2">
+					<p:inputText id="pesquisa" styleClass="caixaPesquisa" />
+					<p:commandButton id="btnPesquisar" value="Pesquisar" styleClass="ui-button" />
+				</h:panelGrid>
+				<p:selectOneRadio styleClass="labelRadio" onclick="habilitarComboCategoria(this)">
+					<f:selectItem itemValue="1" itemLabel="Título" />
+					<f:selectItem itemValue="2" itemLabel="Usuário" />
+					<f:selectItem itemValue="3" itemLabel="Categoria"/>
+				</p:selectOneRadio>		
+				<p:selectOneMenu id="comboCategoria" rendered="false">				
+					<f:selectItem itemValue="0" itemLabel="Selecione..." />
+					<f:selectItem itemValue="1" itemLabel="Ação" />
+					<f:selectItem itemValue="2" itemLabel="Aventura" />
+					<f:selectItem itemValue="3" itemLabel="Comédia" />
+					<f:selectItem itemValue="4" itemLabel="Romance" />
+					<f:selectItem itemValue="5" itemLabel="Ficção Científica" />
+					<f:selectItem itemValue="6" itemLabel="Suspense" />
+					<f:selectItem itemValue="7" itemLabel="Terror" />
+				</p:selectOneMenu>	
+					
+			</h:form>
+			
+			<br /><br />
+			
+			<h:panelGrid rendered="false">
+				<p:galleria var="image" showCaptions="true" showOverlays="true">  
+    				<p:graphicImage />  
+    				    <p:galleriaOverlay title="Imagem">   
+    					</p:galleriaOverlay> 
+				</p:galleria> 
+			</h:panelGrid>
+			
+			<h:panelGrid rendered="true">
+				 <p:dataTable var="filme" value="" styleClass="tabela" rows="10">  
+			        <p:column headerText="Nome">  
+			            <h:outputText value="Os Mercenários 2" /> 
+			        </p:column>  
+			  
+			        <p:column headerText="Year">  
+			            <h:outputText value="2012" /> 
+			        </p:column>  
+			  
+			        <p:column headerText="Genêro">  
+			            <h:outputText value="Ação" />  
+			        </p:column>  
+			  
+			        <p:column headerText="Descrição">  
+			            <h:outputText value="" />  
+			        </p:column>  
+			    </p:dataTable>  
+			</h:panelGrid>
+									
+		</ui:define>
+	</ui:composition>
+</html>

@@ -1,0 +1,99 @@
+#divExterna {
+	width:70%; 
+	left: 15%; 
+	position: absolute;
+}
+
+#container {
+	width: 800px;
+	height: 640px;
+}
+
+.labelBold {
+	font-weight: bold;
+	font-family: Arial;
+	font-size: 12px;
+	color: #59595f;
+}
+
+.labelFormato {
+	font-family: Arial;
+	font-size: 12px;
+	color: #59595f;
+}
+
+.labelRadio {
+	font-family: Arial;
+	font-size: 12px;
+	color: #59595f;
+	font-weight: bold;
+}
+
+.gridBotoes {
+	text-align: right;
+}
+
+.gridLogin {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.colunaLabel {
+	text-align: right;
+}
+
+.ui-button {
+	width: 100px;
+	height: 30px;
+	text-align: center;
+	font-size: 12px;
+	vertical-align: middle;
+	border-radius: 10px;	
+}
+
+.ui-button-text {
+}
+
+.link {
+	font-size: 12px;
+	font-family: Arial;
+}
+
+.caixaTexto {
+	font-size: 12px;
+	height: 16px;
+	width: 200px;
+}
+
+.campoTextarea {
+	font-size: 12px;
+	width: 350px;
+	height: 200px;
+}
+
+.caixaTextoMask {
+	font-size: 12px;
+	height: 18px;
+	width: 100px;
+}
+
+.combo {	
+	font-size: 12px;
+	height: 23px;
+}
+
+.caixaPesquisa {
+	font-size: 12px;
+	height: 18px;
+	width: 300px;
+}
+
+.tabela {
+	text-align: center;
+	width: 450px;
+	font-size: 12px;
+}
+
+.upload {
+	font-size: 12px;
+}
