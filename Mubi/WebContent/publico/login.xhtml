@@ -9,11 +9,6 @@
 <ui:composition template="/templates/estruturaExterna.xhtml">
 	<ui:define name="titulo">Login</ui:define>
 	<ui:define name="conteudo">
-		<h:panelGroup rendered="#{!empty param.login_error}">
-    		<span style="font-color:red"> Erro ao efetuar o login.</span><br />
-    		<br />
-    		Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}
-  		</h:panelGroup>
 		<form id="form_login" method="post" action="#{request.contextPath}/j_spring_security_check">
 			<h:panelGrid styleClass="gridLogin" cellpadding="2">
 				<h:panelGrid columns="2">

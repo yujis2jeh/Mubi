@@ -8,8 +8,5 @@
     <property name="connection.datasource">java:/comp/env/jdbc/MubiDB</property>
     <property name="current_session_context_class">thread</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
-    <!-- Mapeamento das entidades -->
-    <mapping class="financeiro.usuario.Usuario" />
-    <mapping class="financeiro.conta.Conta"/>
   </session-factory>
 </hibernate-configuration>
