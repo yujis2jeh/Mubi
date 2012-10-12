@@ -9,7 +9,12 @@
 <ui:composition template="/templates/estruturaExterna.xhtml">
 	<ui:define name="titulo">Login</ui:define>
 	<ui:define name="conteudo">
-		<form id="form_login" method="post" action="/Mubi/restrito/principal.jsf">
+		<h:panelGroup rendered="#{!empty param.login_error}">
+    		<span style="font-color:red"> Erro ao efetuar o login.</span><br />
+    		<br />
+    		Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}
+  		</h:panelGroup>
+		<form id="form_login" method="post" action="#{request.contextPath}/j_spring_security_check">
 			<h:panelGrid styleClass="gridLogin" cellpadding="2">
 				<h:panelGrid columns="2">
 					<h:outputLabel styleClass="labelBold" value="Usuário: " />
@@ -21,8 +26,8 @@
 				</h:panelGrid>
 								
 				<h:panelGrid columns="2" width="100%" styleClass="gridBotoes">
-					<h:outputLabel styleClass="labelBold" value="Mantenha-me conectado" />
-					<input type="checkbox" />
+					<h:outputLabel styleClass="labelBold" value="Mantenha-me conectado"/>
+					<input type="checkbox" name='_spring_security_remember_me'/>
 				</h:panelGrid>
 				<br />
 				<h:panelGrid styleClass="gridBotoes" width="100%">
