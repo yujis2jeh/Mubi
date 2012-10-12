@@ -60,7 +60,19 @@
 	font-weight: bold;
 }
 
-.menu {
-	height: 505px;
+.ui-menu{
+	color: #59595f;
+	height: 515px;
+}
+
+.ui-menuitem-text {
 	font-size: 12px;
+}
+
+.ui-menuitem{
+	color: #59595f;
+}
+
+.ui-menuitem-link{
+	color: #59595f;
 }

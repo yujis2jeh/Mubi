@@ -17,15 +17,3 @@ function desabilitarBotaoCamposPreenchidos() {
 		botao.enable();
 	}
 }
-
-function habilitarComboCategoria(objRadio) {
-	var radioSelecionado = objRadio.value;
-	
-	if(radioSelecionado == 3) {
-		document.getElementById("principalForm:comboCategoria").rendered = true;
-		document.getElementById("principalForm:pesquisa").disabled = true;
-	} else {
-		document.getElementById("principalForm:comboCategoria").rendered = false;
-		document.getElementById("principalForm:pesquisa").disabled = false;
-	}
-}

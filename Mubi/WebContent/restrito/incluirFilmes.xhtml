@@ -24,6 +24,18 @@
 						        
 					<p:outputLabel for="duracao" value="Duração:" styleClass="labelBold" />
 					<p:inputMask id="duracao" mask="999" styleClass="caixaTextoMask" />
+											        
+					<p:outputLabel for="genero" value="Genêro:" styleClass="labelBold" />
+					<p:selectOneMenu id="genero" var="i" styleClass="combo">  
+						<f:selectItem itemLabel="Selecione" itemValue="0" /> 
+						<f:selectItem itemLabel="Ação" itemValue="1" /> 
+						<f:selectItem itemLabel="Aventura" itemValue="2" /> 
+						<f:selectItem itemLabel="Comédia" itemValue="3" /> 
+						<f:selectItem itemLabel="Ficção Científica" itemValue="4" /> 
+						<f:selectItem itemLabel="Romance" itemValue="5" /> 
+						<f:selectItem itemLabel="Suspense" itemValue="6" /> 						
+						<f:selectItem itemLabel="Terror" itemValue="7" /> 
+					</p:selectOneMenu>
 										
 					<p:outputLabel for="classificacao" value="Classificação Etária:" styleClass="labelBold" />
 					<p:selectOneMenu id="classificacao" var="i" styleClass="combo">  

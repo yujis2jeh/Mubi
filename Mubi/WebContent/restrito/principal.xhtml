@@ -12,24 +12,29 @@
 			<h:form id="principalForm">		
 				<h:panelGrid columns="2">
 					<p:inputText id="pesquisa" styleClass="caixaPesquisa" />
-					<p:commandButton id="btnPesquisar" value="Pesquisar" styleClass="ui-button" />
+					<p:commandButton id="btnPesquisar" value="Pesquisar" styleClass="ui-button" />				
 				</h:panelGrid>
-				<p:selectOneRadio styleClass="labelRadio" onclick="habilitarComboCategoria(this)">
-					<f:selectItem itemValue="1" itemLabel="Título" />
-					<f:selectItem itemValue="2" itemLabel="Usuário" />
-					<f:selectItem itemValue="3" itemLabel="Categoria"/>
-				</p:selectOneRadio>		
-				<p:selectOneMenu id="comboCategoria" rendered="false">				
-					<f:selectItem itemValue="0" itemLabel="Selecione..." />
-					<f:selectItem itemValue="1" itemLabel="Ação" />
-					<f:selectItem itemValue="2" itemLabel="Aventura" />
-					<f:selectItem itemValue="3" itemLabel="Comédia" />
-					<f:selectItem itemValue="4" itemLabel="Romance" />
-					<f:selectItem itemValue="5" itemLabel="Ficção Científica" />
-					<f:selectItem itemValue="6" itemLabel="Suspense" />
-					<f:selectItem itemValue="7" itemLabel="Terror" />
-				</p:selectOneMenu>	
+				
+				<h:panelGrid columns="2" cellpadding="15">								
+					<h:panelGrid columns="2" cellpadding="2">
+						<p:outputLabel for="comboGenero" value="Genêro: " styleClass="labelBold" />
+						<p:selectOneMenu id="comboGenero" styleClass="combo">
+								<f:selectItem itemLabel="Todas" itemValue="0" /> 
+								<f:selectItem itemLabel="Ação" itemValue="1" /> 
+								<f:selectItem itemLabel="Aventura" itemValue="2" /> 
+								<f:selectItem itemLabel="Comédia" itemValue="3" /> 
+								<f:selectItem itemLabel="Ficção Científica" itemValue="4" /> 
+								<f:selectItem itemLabel="Romance" itemValue="5" /> 
+								<f:selectItem itemLabel="Suspense" itemValue="6" /> 						
+								<f:selectItem itemLabel="Terror" itemValue="7" /> 
+						</p:selectOneMenu>	
+					</h:panelGrid>
 					
+					<p:selectOneRadio styleClass="labelRadio" value="1">
+						<f:selectItem itemValue="1" itemLabel="Título"  />
+						<f:selectItem itemValue="2" itemLabel="Usuário" />
+					</p:selectOneRadio>							
+				</h:panelGrid>
 			</h:form>
 			
 			<br /><br />
