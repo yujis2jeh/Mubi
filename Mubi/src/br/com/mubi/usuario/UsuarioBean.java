@@ -17,7 +17,7 @@ public class UsuarioBean {
 	private String destinoSalvar;
 	
 	public String novo() {
-		this.destinoSalvar = "login";
+		this.destinoSalvar = "usuarioSucesso";
 		this.usuario = new Usuario();
 		this.usuario.setAtivo(true);
 		return "cadastroUsuario";
