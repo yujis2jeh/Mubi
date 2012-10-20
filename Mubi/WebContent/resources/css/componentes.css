@@ -28,6 +28,17 @@
 	font-weight: bold;
 }
 
+.botaoLogin {
+	background-color: #708090;
+	color: #ffffff;
+	width: 100px;
+	height: 30px;
+	text-align: center;
+	font-size: 12px;
+	vertical-align: middle;
+	border-radius: 10px;	
+}
+
 .gridBotoes {
 	text-align: right;
 }
@@ -48,9 +59,6 @@
 	font-size: 12px;
 	vertical-align: middle;
 	border-radius: 10px;	
-}
-
-.ui-button-text {
 }
 
 .link {
