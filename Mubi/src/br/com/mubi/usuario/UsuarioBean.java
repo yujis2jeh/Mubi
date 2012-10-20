@@ -17,7 +17,7 @@ public class UsuarioBean {
 	private String destinoSalvar;
 	
 	public String novo() {
-		this.destinoSalvar = "usuarioSucesso";
+		this.destinoSalvar = "login";
 		this.usuario = new Usuario();
 		this.usuario.setAtivo(true);
 		return "cadastroUsuario";
@@ -33,8 +33,8 @@ public class UsuarioBean {
 		
 		String senha = this.usuario.getSenha();
 		if (!senha.equals(this.confirmaSenha)) {
-			FacesMessage facesMassage = new FacesMessage("A senha n√£o foi confirmada corretamente");
-			context.addMessage(null, facesMassage);
+			FacesMessage facesMessage = new FacesMessage("A senha n„o foi confirmada corretamente");
+			context.addMessage(null, facesMessage);
 			return null;
 		}
 		

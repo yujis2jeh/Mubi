@@ -10,38 +10,45 @@
 	<ui:define name="titulo">Cadastro</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="cadastroForm">
+			<p:growl id="growl" autoUpdate="true" sticky="true" />
+			
 			<h:panelGrid columns="2" columnClasses="colunaLabel" cellpadding="3" cellspacing="2">
 											
 				<p:outputLabel for="nome"  value="Nome: " styleClass="labelBold" />
-				<p:inputText id="nome" value="#{usuarioBean.usuario.nome}" styleClass="caixaTexto" />	
+				<p:inputText id="nome" value="#{usuarioBean.usuario.nome}" styleClass="caixaTexto"
+					maxlength="30" />	
 				
 				<p:outputLabel for="dataNascimento"  value="Data de Nascimento: " styleClass="labelBold" />
-				<p:inputMask id="dataNascimento" value="#{usuarioBean.usuario.nascimento}" mask="99/99/9999" styleClass="caixaTextoMask" >
-					<f:convertDateTime dateStyle="medium"/>
+				<p:inputMask id="dataNascimento" value="#{usuarioBean.usuario.nascimento}" mask="99/99/9999" 
+					styleClass="caixaTextoMask">
+					<f:convertDateTime dateStyle="medium" />
 				</p:inputMask>			
 				
 				<p:outputLabel for="email"  value="E-mail: " styleClass="labelBold" />
-				<p:inputText id="email" styleClass="caixaTexto" value="#{usuarioBean.usuario.email}"/>	
+				<p:inputText id="email" styleClass="caixaTexto" value="#{usuarioBean.usuario.email}" />	
 				
 				<p:outputLabel for="usuario" value="Usuário: " styleClass="labelBold" />
-				<p:inputText id="usuario" styleClass="caixaTexto" maxlength="10" value="#{usuarioBean.usuario.login}"/>	
+				<p:inputText id="usuario" styleClass="caixaTexto" maxlength="20" 
+					value="#{usuarioBean.usuario.login}"  />	
 				
 				<p:outputLabel for="senha" value="Senha: " styleClass="labelBold"/>
-				<p:password id="senha"  styleClass="caixaTexto" maxlength="8" value="#{usuarioBean.usuario.senha}"/>	
+				<p:password id="senha"  styleClass="caixaTexto" maxlength="8" 
+					value="#{usuarioBean.usuario.senha}" />	
 				
 				<p:outputLabel for="confirmarSenha"  value="Confirmar senha: " styleClass="labelBold" />
-				<p:password id="confirmarSenha" styleClass="caixaTexto" maxlength="8" value="#{usuarioBean.confirmaSenha}"/>	
+				<p:password id="confirmarSenha" styleClass="caixaTexto" maxlength="8" 
+					value="#{usuarioBean.confirmaSenha}" />	
 								
 			</h:panelGrid>
 			<br />
 			<br />
 			<div align="right" style="width: 350px">
 				<h:panelGrid styleClass="gridBotoes" columns="2" width="200px" cellspacing="0">
-					<p:commandButton id="btnVoltar" value="Voltar"
-						action="/publico/login.jsf" ajax="false" />
+					<p:commandButton id="btnVoltar" value="Voltar" ajax="false" 
+						action="/publico/login.jsf" immediate="true" />
 						
-					<p:commandButton id="btnSalvar" value="Salvar"
-						action="#{usuarioBean.salvar}" ajax="false" />
+					<p:commandButton id="btnSalvar" value="Salvar" ajax="false" 
+						action="#{usuarioBean.salvar}" />
 				</h:panelGrid>	
 			</div>
 		</h:form>		

@@ -10,9 +10,11 @@ import javax.faces.bean.SessionScoped;
 public class FilmeBean {
 	
 	private List<ClassificacaoEtaria> imagens;
+	private Filme filme;
 	
 	public FilmeBean() {
 		carregarImagensClassificacao();
+		setFilme(new Filme());
 	}
 	
 	public void carregarImagensClassificacao() {
@@ -32,5 +34,18 @@ public class FilmeBean {
 	public void setImagens(List<ClassificacaoEtaria> imagens) {
 		this.imagens = imagens;
 	}
+	
+	public void validarContinuacao(){
+		
+	}
+
+	public Filme getFilme() {
+		return filme;
+	}
+
+	public void setFilme(Filme filme) {
+		this.filme = filme;
+	}
+	
 	
 }
