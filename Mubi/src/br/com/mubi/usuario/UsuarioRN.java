@@ -2,6 +2,9 @@ package br.com.mubi.usuario;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import br.com.mubi.util.DAOFactory;
 
 public class UsuarioRN {
@@ -36,5 +39,38 @@ public class UsuarioRN {
 	
 	public List<Usuario> listar() {
 		return this.usuarioDAO.listar();
+	}
+	
+	public boolean validarCamposObrigatorios(Usuario usuario) {
+		boolean validacaoOk = true;
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		if(usuario.getNome().isEmpty()) {
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Nome obrigatório", null));
+			validacaoOk = false;
+		}
+		if(usuario.getNascimento() == null) {
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Data de Nascimento obrigatória", null));
+			validacaoOk = false;
+		}
+		if(usuario.getLogin().isEmpty()) {
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuário obrigatório", null));
+			validacaoOk = false;
+		}
+		if(usuario.getSenha().isEmpty()) {
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Senha obrigatória", null));
+			validacaoOk = false;
+		}
+		if(usuario.getEmail().isEmpty()) {
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "E-Mail obrigatório", null));
+			validacaoOk = false;
+		}
+		
+		return validacaoOk;
 	}
 }

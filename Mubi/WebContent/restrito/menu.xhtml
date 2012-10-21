@@ -12,7 +12,7 @@
 	            <p:menuitem value="Meus Filmes" outcome="/restrito/meusFilmes.jsf" icon="ui-icon-star"/> 
 	            <p:menuitem value="Incluir Filme" outcome="/restrito/incluirFilmes.jsf" icon="ui-icon-star"/>	             
 	            <p:menuitem value="Visualizar Relatório" outcome="/restrito/relatorio.jsf" icon="ui-icon-star"/> 	            
-	            <p:menuitem value="Editar Conta" outcome="/restrito/atualizacaoConta.jsf" icon="ui-icon-star"/>  	            
+	            <p:menuitem value="Editar Conta" action="#{usuarioBean.editar}" icon="ui-icon-star"/>  	            
 	            <p:menuitem value="Sair" outcome="/publico/login.jsf" icon="ui-icon-close"/>  
 	    	</p:menu>
 	    </h:form>

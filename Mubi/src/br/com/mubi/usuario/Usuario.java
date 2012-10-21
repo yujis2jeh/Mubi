@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.NaturalId;
@@ -39,13 +41,8 @@ public class Usuario {
 	private String senha;
 	
 	@Column(name = "nascimento")
+	@Temporal(value = TemporalType.DATE)
 	private Date nascimento;
-	
-	@Column(name = "celular")
-	private String celular;
-	
-	@Column(name = "idioma")
-	private String idioma;
 	
 	@Column(name = "ativo")
 	private boolean ativo;
@@ -94,18 +91,6 @@ public class Usuario {
 	public void setNascimento(Date nascimento) {
 		this.nascimento = nascimento;
 	}
-	public String getCelular() {
-		return celular;
-	}
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
-	public String getIdioma() {
-		return idioma;
-	}
-	public void setIdioma(String idioma) {
-		this.idioma = idioma;
-	}
 	public boolean isAtivo() {
 		return ativo;
 	}
@@ -123,10 +108,8 @@ public class Usuario {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (ativo ? 1231 : 1237);
-		result = prime * result + ((celular == null) ? 0 : celular.hashCode());
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((idioma == null) ? 0 : idioma.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result
 				+ ((nascimento == null) ? 0 : nascimento.hashCode());
@@ -147,11 +130,6 @@ public class Usuario {
 		Usuario other = (Usuario) obj;
 		if (ativo != other.ativo)
 			return false;
-		if (celular == null) {
-			if (other.celular != null)
-				return false;
-		} else if (!celular.equals(other.celular))
-			return false;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -161,11 +139,6 @@ public class Usuario {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
-			return false;
-		if (idioma == null) {
-			if (other.idioma != null)
-				return false;
-		} else if (!idioma.equals(other.idioma))
 			return false;
 		if (login == null) {
 			if (other.login != null)

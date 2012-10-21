@@ -10,34 +10,52 @@
 	<ui:define name="titulo"> Editar dados da conta</ui:define>
 	<ui:define name="conteudo">
 		<h:form id="atualizacaoForm">
-			<h:panelGrid columns="2" cellpadding="3" cellspacing="2" columnClasses="colunaLabel">
-											
+			<p:growl sticky="true" autoUpdate="true" />
+			
+			<h:panelGrid columns="2" cellpadding="3" cellspacing="2" columnClasses="colunaLabel">											
 				<p:outputLabel for="nome"  value="Nome: " styleClass="labelBold" />
-				<p:inputText id="nome" styleClass="caixaTexto" />	
+				<p:inputText id="nome" styleClass="caixaTexto" value="#{usuarioBean.usuario.nome}"
+					maxlength="30"  />	
 				
 				<p:outputLabel for="dataNascimento"  value="Data de Nascimento: " styleClass="labelBold" />
-           		<p:inputMask id="dataNascimento" mask="99/99/9999" styleClass="caixaTextoMask" />
+           		<p:inputMask id="dataNascimento" mask="99/99/9999" styleClass="caixaTextoMask"
+           			value="#{usuarioBean.usuario.nascimento}">           			
+					<f:convertDateTime dateStyle="medium" pattern="dd/MM/yyyy" />
+           		</p:inputMask>
 				
 				<p:outputLabel for="email"  value="E-mail: " styleClass="labelBold" />
-				<p:inputText id="email" styleClass="caixaTexto" />	
+				<p:inputText id="email" styleClass="caixaTexto" value="#{usuarioBean.usuario.email}"
+					validatorMessage="E-mail inválido">
+					<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+"/>	
+				</p:inputText>	
 				
 				<p:outputLabel for="usuario" value="Usuário: " styleClass="labelBold" />
-				<p:inputText id="usuario" styleClass="caixaTexto" maxlength="" disabled="true" />	
-				
+				<p:inputText id="usuario" styleClass="caixaTexto" maxlength="20" disabled="true"
+					value="#{usuarioBean.usuario.login}" />				
+			</h:panelGrid>
+			
+			<br />
+			<p:commandLink value="Editar Senha" update=":atualizacaoForm" action="#{usuarioBean.habilitarAreaSenha}" />
+			<br />
+			
+			<h:panelGrid id="gridSenha" columns="2" columnClasses="colunaLabel" rendered="#{usuarioBean.areaSenha}">
 				<p:outputLabel for="senha" value="Senha: " styleClass="labelBold" />
-				<p:password id="senha"  styleClass="caixaTexto" maxlength="8" />	
+				<p:password id="senha" styleClass="caixaTexto" maxlength="8"
+					value="#{usuarioBean.usuario.senha}" />	
 				
 				<p:outputLabel for="confirmarSenha"  value="Confirmar senha: " styleClass="labelBold" />
-				<p:password id="confirmarSenha" styleClass="caixaTexto" maxlength="8" />	
-								
-			</h:panelGrid>
+				<p:password id="confirmarSenha" styleClass="caixaTexto" maxlength="8"
+					value="#{usuarioBean.confirmaSenha}" />	
+			</h:panelGrid>	
+			
 			<br /><br />
+			
 			<div align="center"  style="width: 350px">
 				<h:panelGrid styleClass="gridBotoes" columns="2" width="200px" cellspacing="0">
 					<p:commandButton id="btnVoltar" value="Voltar"
 						action="/restrito/principal.jsf" ajax="false" />
 					<p:commandButton id="btnSalvar" value="Salvar"
-						action="/publico/login.jsf" ajax="false" />
+						action="#{usuarioBean.salvar}" ajax="false" />
 				</h:panelGrid>	
 			</div>
 		</h:form>		
