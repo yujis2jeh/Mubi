@@ -3,19 +3,19 @@ package br.com.mubi.review;
 public class ClassificacaoEtaria {
 
 	private String tipo;
-	private String imagem;
+	private String classificacao;
 	
-	public ClassificacaoEtaria(String tipo, String imagem){
+	public ClassificacaoEtaria(String tipo, String classiicacao){
 		setTipo(tipo);
-		setImagem(imagem);
+		setImagem(classiicacao);
 	}
 
 	public String getImagem() {
-		return imagem;
+		return classificacao;
 	}
 
 	public void setImagem(String imagem) {
-		this.imagem = imagem;
+		this.classificacao = imagem;
 	}
 
 	public String getTipo() {

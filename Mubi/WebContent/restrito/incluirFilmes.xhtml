@@ -40,7 +40,7 @@
 					<p:outputLabel for="classificacao" value="Classificação Etária:" styleClass="labelBold" />
 					<p:selectOneMenu id="classificacao" var="i" styleClass="combo">  
 			            <f:selectItem itemLabel="Selecione" itemValue="" /> 
-			            <f:selectItems value="#{filmeBean.imagens}" var="imagem" itemValue="#{imagem}" itemLabel="#{imagem.tipo}" />	            
+			            <f:selectItems value="#{filmeBean.classificacao}" var="classificacao" itemValue="#{classificacao}" itemLabel="#{classificacao.tipo}" />	            
 			            <p:column>				            	
 			           		<p:graphicImage library="imagens" name="#{i.imagem}" width="25" height="25" />
 			            </p:column>

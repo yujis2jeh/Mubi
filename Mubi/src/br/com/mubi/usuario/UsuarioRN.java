@@ -29,6 +29,7 @@ public class UsuarioRN {
 			usuario.getPermissao().add("ROLE_ADMINISTRADOR");
 			this.usuarioDAO.salvar(usuario);
 		} else {
+			usuario.getPermissao();
 			this.usuarioDAO.atualizar(usuario);
 		}
 	}

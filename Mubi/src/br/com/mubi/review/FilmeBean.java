@@ -9,7 +9,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class FilmeBean {
 	
-	private List<ClassificacaoEtaria> imagens;
+	private List<ClassificacaoEtaria> classificacao;
 	private Filme filme;
 	
 	public FilmeBean() {
@@ -18,21 +18,21 @@ public class FilmeBean {
 	}
 	
 	public void carregarImagensClassificacao() {
-		imagens = new ArrayList<ClassificacaoEtaria>();
-		imagens.add(new ClassificacaoEtaria("Livre", "classificacaoLivre.png"));
-		imagens.add(new ClassificacaoEtaria("Maior de 10 anos", "classificacao10.png"));
-		imagens.add(new ClassificacaoEtaria("Maior de 12 anos", "classificacao12.png"));
-		imagens.add(new ClassificacaoEtaria("Maior de 14 anos", "classificacao14.png"));
-		imagens.add(new ClassificacaoEtaria("Maior de 16 anos", "classificacao16.png"));
-		imagens.add(new ClassificacaoEtaria("Maior de 18 anos", "classificacao18.png"));
+		classificacao = new ArrayList<ClassificacaoEtaria>();
+		classificacao.add(new ClassificacaoEtaria("Livre", "classificacaoLivre.png"));
+		classificacao.add(new ClassificacaoEtaria("Maior de 10 anos", "classificacao10.png"));
+		classificacao.add(new ClassificacaoEtaria("Maior de 12 anos", "classificacao12.png"));
+		classificacao.add(new ClassificacaoEtaria("Maior de 14 anos", "classificacao14.png"));
+		classificacao.add(new ClassificacaoEtaria("Maior de 16 anos", "classificacao16.png"));
+		classificacao.add(new ClassificacaoEtaria("Maior de 18 anos", "classificacao18.png"));
 	}
 
-	public List<ClassificacaoEtaria> getImagens() {
-		return imagens;
+	public List<ClassificacaoEtaria> getClassificacao() {
+		return classificacao;
 	}
 
-	public void setImagens(List<ClassificacaoEtaria> imagens) {
-		this.imagens = imagens;
+	public void setClassificacao(List<ClassificacaoEtaria> classificacao) {
+		this.classificacao = classificacao;
 	}
 	
 	public void validarContinuacao(){
