@@ -7,14 +7,18 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+
+import org.hibernate.exception.ConstraintViolationException;
 
 @ManagedBean(name = "usuarioBean")
 @SessionScoped
 public class UsuarioBean {
-	private Usuario usuario = new Usuario();
+	private Usuario usuario;
 	private String confirmaSenha;
 	private List<Usuario> lista;
 	private String destinoSalvar;
+	private boolean areaSenha;
 	
 	public String novo() {
 		this.destinoSalvar = "login";
@@ -24,23 +28,42 @@ public class UsuarioBean {
 	}
 	
 	public String editar() {
+		this.destinoSalvar = "principal";
+		UsuarioRN usuarioRN = new UsuarioRN();
+		HttpServletRequest request = 
+				(HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		
+		this.usuario = usuarioRN.buscarPorLogin(request.getRemoteUser());
 		this.confirmaSenha = this.usuario.getSenha();
-		return "/publico/usuario";
+		return "atualizacaoConta";
 	}
 	
 	public String salvar() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		
+		FacesContext context = FacesContext.getCurrentInstance();		
 		String senha = this.usuario.getSenha();
+		
 		if (!senha.equals(this.confirmaSenha)) {
-			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
+			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente.");
+			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
 			context.addMessage(null, facesMessage);
 			return null;
 		}
 		
+
 		UsuarioRN usuarioRN = new UsuarioRN();
-		usuarioRN.salvar(this.usuario);		
-		return this.destinoSalvar;
+		
+		if(usuarioRN.validarCamposObrigatorios(this.usuario)) {
+			try {
+				usuarioRN.salvar(this.usuario);		
+				return this.destinoSalvar;
+			} catch (ConstraintViolationException exception) {
+				FacesMessage message = new FacesMessage("O usuário já existe.");
+				message.setSeverity(FacesMessage.SEVERITY_WARN);
+				context.addMessage(null, message);
+			}
+		}
+
+		return null;
 	}
 	
 	public String excluir() {
@@ -80,6 +103,15 @@ public class UsuarioBean {
 		return null;
 	}
 	
+	public void habilitarAreaSenha() {
+		if(this.areaSenha) {
+			this.areaSenha = false;
+		} else {
+			this.areaSenha = true;
+		}
+		
+	}
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -97,5 +129,13 @@ public class UsuarioBean {
 	}
 	public void setDestinoSalvar(String destinoSalvar) {
 		this.destinoSalvar = destinoSalvar;
+	}
+
+	public boolean isAreaSenha() {
+		return areaSenha;
+	}
+
+	public void setAreaSenha(boolean areaSenha) {
+		this.areaSenha = areaSenha;
 	}
 }

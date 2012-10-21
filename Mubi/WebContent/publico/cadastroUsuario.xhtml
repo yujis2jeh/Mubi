@@ -21,16 +21,22 @@
 				<p:outputLabel for="dataNascimento"  value="Data de Nascimento: " styleClass="labelBold" />
 				<p:inputMask id="dataNascimento" value="#{usuarioBean.usuario.nascimento}" mask="99/99/9999" 
 					styleClass="caixaTextoMask">
-					<f:convertDateTime dateStyle="medium" />
+					<f:convertDateTime dateStyle="medium" pattern="dd/MM/yyyy" />
 				</p:inputMask>			
 				
 				<p:outputLabel for="email"  value="E-mail: " styleClass="labelBold" />
-				<p:inputText id="email" styleClass="caixaTexto" value="#{usuarioBean.usuario.email}" />	
-				
+				<p:inputText id="email" styleClass="caixaTexto" value="#{usuarioBean.usuario.email}"
+					validatorMessage="E-mail inválido">
+					<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+"/>					
+				</p:inputText>
+			
 				<p:outputLabel for="usuario" value="Usuário: " styleClass="labelBold" />
 				<p:inputText id="usuario" styleClass="caixaTexto" maxlength="20" 
-					value="#{usuarioBean.usuario.login}"  />	
-				
+					value="#{usuarioBean.usuario.login}"
+					validatorMessage="Usuário deve ter no mínimo 5 e no máximo 20 caracteres e só pode ter os símbolos '.' e '_'.">
+					<f:validateRegex pattern="([a-z]|[0-9]|[.]|[_]){5,20}"/>
+				</p:inputText>
+			
 				<p:outputLabel for="senha" value="Senha: " styleClass="labelBold"/>
 				<p:password id="senha"  styleClass="caixaTexto" maxlength="8" 
 					value="#{usuarioBean.usuario.senha}" />	
@@ -48,7 +54,7 @@
 						action="/publico/login.jsf" immediate="true" />
 						
 					<p:commandButton id="btnSalvar" value="Salvar" ajax="false" 
-						action="#{usuarioBean.salvar}" />
+						actionListener="#{usuarioBean.salvar}" />
 				</h:panelGrid>	
 			</div>
 		</h:form>		
