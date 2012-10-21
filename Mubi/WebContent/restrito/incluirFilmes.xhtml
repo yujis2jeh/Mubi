@@ -10,23 +10,24 @@
 		<ui:define name="menu" />
 		<ui:define name="titulo">Incluir Filme</ui:define>
 		<ui:define name="conteudo">
-			<h:form id="incluirFilmeForm" rendered="true">
+			
+			<h:form id="incluirFilmeForm" rendered="#{!filmeBean.filmeRN.continuacao}">
+			<p:growl autoUpdate="true" sticky="true"/>
 				<h:panelGrid columns="2" cellpadding="3" cellspacing="2" columnClasses="colunaLabel">
 					<p:outputLabel for="tituloBrasil" value="Título no Brasil:" styleClass="labelBold" />
-					<p:inputText id="tituloBrasil" maxlength="50" styleClass="caixaTexto" 
-						onkeyup="desabilitarBotaoCamposPreenchidos()"/>
+					<p:inputText id="tituloBrasil" maxlength="50" styleClass="caixaTexto" value="#{filmeBean.filmeRN.filme.tituloBrasil}"/>
 					
 					<p:outputLabel for="tituloOriginal" value="Título Original:" styleClass="labelBold" />
-					<p:inputText id="tituloOriginal" maxlength="50" styleClass="caixaTexto" />	
+					<p:inputText id="tituloOriginal" maxlength="50" styleClass="caixaTexto" value="#{filmeBean.filmeRN.filme.tituloOriginal}"/>	
 					
 					<p:outputLabel for="ano" value="Ano de Lançamento:" styleClass="labelBold" />
-					<p:inputMask id="ano" mask="9999" autocomplete="true" styleClass="caixaTextoMask" />
+					<p:inputMask id="ano" mask="9999" autocomplete="true" styleClass="caixaTextoMask" value="#{filmeBean.filmeRN.filme.anoLancamento}"/>
 						        
 					<p:outputLabel for="duracao" value="Duração:" styleClass="labelBold" />
-					<p:inputMask id="duracao" mask="999" styleClass="caixaTextoMask" />
+					<p:inputMask id="duracao" mask="999" styleClass="caixaTextoMask" value="#{filmeBean.filmeRN.filme.duracao}"/>
 											        
 					<p:outputLabel for="genero" value="Genêro:" styleClass="labelBold" />
-					<p:selectOneMenu id="genero" var="i" styleClass="combo">  
+					<p:selectOneMenu id="genero" var="i" styleClass="combo" value="#{filmeBean.filmeRN.filme.genero}">  
 						<f:selectItem itemLabel="Selecione" itemValue="0" /> 
 						<f:selectItem itemLabel="Ação" itemValue="1" /> 
 						<f:selectItem itemLabel="Aventura" itemValue="2" /> 
@@ -38,7 +39,7 @@
 					</p:selectOneMenu>
 										
 					<p:outputLabel for="classificacao" value="Classificação Etária:" styleClass="labelBold" />
-					<p:selectOneMenu id="classificacao" var="i" styleClass="combo">  
+					<p:selectOneMenu id="classificacao" var="i" styleClass="combo" value="#{filmeBean.filmeRN.filme.classificacao}">  
 			            <f:selectItem itemLabel="Selecione" itemValue="" /> 
 			            <f:selectItems value="#{filmeBean.classificacao}" var="classificacao" itemValue="#{classificacao}" itemLabel="#{classificacao.tipo}" />	            
 			            <p:column>				            	
@@ -49,11 +50,11 @@
 			            </p:column>				           
 			        </p:selectOneMenu> 
 												
-					<p:outputLabel for="estudio" value="Estúdio:" styleClass="labelBold" />
-					<p:inputText id="estudio" maxlength="30" styleClass="caixaTexto" />
+					<p:outputLabel for="produtora" value="Produtora:" styleClass="labelBold" />
+					<p:inputText id="produtora" maxlength="30" styleClass="caixaTexto" value="#{filmeBean.filmeRN.filme.produtora}"/>
 											
 					<p:outputLabel for="direcao" value="Direção:" styleClass="labelBold" />
-					<p:inputText id="direcao" maxlength="30" styleClass="caixaTexto" />		
+					<p:inputText id="direcao" maxlength="30" styleClass="caixaTexto" value="#{filmeBean.filmeRN.filme.direcao}"/>		
 					
 				</h:panelGrid>
 				<br />
@@ -63,12 +64,12 @@
 						<p:commandButton id="btnVoltar" value="Voltar" styleClass="ui-button"
 							action="/restrito/principal.jsf" ajax="false" />							
 						<p:commandButton id="btnProximo" value="Próximo" styleClass="ui-button" 
-							action="#" ajax="false" widgetVar="proximo"  />
+							action="#{filmeBean.validarContinuacao}" ajax="false" widgetVar="proximo" />
 					</h:panelGrid>	
 				</div>
 
 			</h:form>
-			<h:panelGrid rendered="false">
+			<h:panelGrid rendered="#{filmeBean.filmeRN.continuacao}">
 				<h:form enctype="multipart/form-data">
 					<h:outputText value="Imagem da Capa:" styleClass="labelBold" />
 					<p:fileUpload id="capa" cancelLabel="Cancelar" uploadLabel="Enviar" label="Selecione"
@@ -96,7 +97,7 @@
 					<div align="center" style="width: 100%">
 						<h:panelGrid styleClass="gridBotoes" columns="2" cellspacing="2" cellpadding="5">
 							<p:commandButton id="btnVoltarInclusao" value="Voltar"
-								action="#" ajax="false" />							
+								action="#{filmeBean.filmeRN.voltar}" ajax="false" />							
 							<p:commandButton id="btnSalvar" value="Salvar" 
 								action="#" ajax="false" widgetVar="Salvar"  />
 						</h:panelGrid>	
