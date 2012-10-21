@@ -2,19 +2,21 @@ package br.com.mubi.review;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
 public class FilmeBean {
 	
 	private List<ClassificacaoEtaria> classificacao;
-	private Filme filme;
+	private FilmeRN filmeRN;
 	
 	public FilmeBean() {
 		carregarImagensClassificacao();
-		setFilme(new Filme());
+		setFilmeRN(new FilmeRN());
 	}
 	
 	public void carregarImagensClassificacao() {
@@ -27,6 +29,17 @@ public class FilmeBean {
 		classificacao.add(new ClassificacaoEtaria("Maior de 18 anos", "classificacao18.png"));
 	}
 
+	
+	public void validarContinuacao(){
+		boolean continuaInclusao;
+		continuaInclusao = filmeRN.continuarInclusao();
+		if(!continuaInclusao){
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Favor preencher todos os campos.", null);
+			facesContext.addMessage(null, facesMessage);
+		}
+	}
+
 	public List<ClassificacaoEtaria> getClassificacao() {
 		return classificacao;
 	}
@@ -34,18 +47,13 @@ public class FilmeBean {
 	public void setClassificacao(List<ClassificacaoEtaria> classificacao) {
 		this.classificacao = classificacao;
 	}
-	
-	public void validarContinuacao(){
-		
+
+	public FilmeRN getFilmeRN() {
+		return filmeRN;
 	}
 
-	public Filme getFilme() {
-		return filme;
-	}
-
-	public void setFilme(Filme filme) {
-		this.filme = filme;
-	}
-	
+	public void setFilmeRN(FilmeRN filmeRN) {
+		this.filmeRN = filmeRN;
+	}	
 	
 }

@@ -1,21 +1,59 @@
 package br.com.mubi.review;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.com.mubi.usuario.Usuario;
+
 @Entity
-@Table
+@Table(name = "filme")
 public class Filme {
 	
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
 	private long id;
+	
+	@Column(name = "titulo_brasil")
 	private String tituloBrasil;
+	
+	@Column(name = "titulo_original")
 	private String tituloOriginal;
+	
+	@Column(name = "ano_lancamento")
 	private int anoLancamento;
+	
+	@Column(name = "duracao")
 	private int duracao;
+	
+	@Column(name = "genero")
 	private String genero;
+	
+	@Column(name = "classificacao")
 	private String classificacao;
+	
+	@Column(name = "produtora")
 	private String produtora;
+	
+	@Column(name = "direcao")
 	private String direcao;
+	
+	@Column(name = "trailer")
+	private String trailer;
+	
+	@Column(name = "sinopse")
+	private String sinopse;
+	
+	@ManyToOne
+	@JoinColumn(name="codigo")
+	private Usuario usuario;
+	
+	
 	
 	public long getId() {
 		return id;
@@ -70,6 +108,24 @@ public class Filme {
 	}
 	public void setDirecao(String direcao) {
 		this.direcao = direcao;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	public String getTrailer() {
+		return trailer;
+	}
+	public void setTrailer(String trailer) {
+		this.trailer = trailer;
+	}
+	public String getSinopse() {
+		return sinopse;
+	}
+	public void setSinopse(String sinopse) {
+		this.sinopse = sinopse;
 	}
 	
 }
