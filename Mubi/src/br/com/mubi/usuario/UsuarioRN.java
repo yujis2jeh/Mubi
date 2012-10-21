@@ -42,9 +42,8 @@ public class UsuarioRN {
 		return this.usuarioDAO.listar();
 	}
 	
-	public boolean validarCamposObrigatorios(Usuario usuario) {
+	public boolean validarCamposObrigatorios(Usuario usuario, FacesContext context) {
 		boolean validacaoOk = true;
-		FacesContext context = FacesContext.getCurrentInstance();
 		
 		if(usuario.getNome().isEmpty()) {
 			context.addMessage(null,
