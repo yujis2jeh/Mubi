@@ -52,7 +52,7 @@ public class UsuarioBean {
 
 		UsuarioRN usuarioRN = new UsuarioRN();
 		
-		if(usuarioRN.validarCamposObrigatorios(this.usuario)) {
+		if(usuarioRN.validarCamposObrigatorios(this.usuario, context)) {
 			try {
 				usuarioRN.salvar(this.usuario);		
 				return this.destinoSalvar;
@@ -60,10 +60,11 @@ public class UsuarioBean {
 				FacesMessage message = new FacesMessage("O usuário já existe.");
 				message.setSeverity(FacesMessage.SEVERITY_WARN);
 				context.addMessage(null, message);
+				return null;
 			}
+		}else {
+			return null;
 		}
-
-		return null;
 	}
 	
 	public String excluir() {
