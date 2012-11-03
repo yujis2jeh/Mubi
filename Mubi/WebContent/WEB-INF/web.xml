@@ -39,15 +39,6 @@
     <filter-name>PrimeFaces FileUpload Filter</filter-name>
     <servlet-name>Faces Servlet</servlet-name>
  </filter-mapping>-->
- <!-- Hibernate Filter -->
-  <filter>
-    <filter-name>conexaoFilter</filter-name>
-    <filter-class>br.com.mubi.web.filter.ConexaoHibernateFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>conexaoFilter</filter-name>
-    <url-pattern>*.jsf</url-pattern>
-  </filter-mapping>
   <!-- JNDI -->
   <resource-ref>
     <description>DataSource FinanceiroDB</description>

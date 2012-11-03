@@ -1,11 +1,15 @@
 package br.com.mubi.review;
 
+import br.com.mubi.util.DAOFactory;
+
 public class FilmeRN {
 	private Filme filme;
+	private FilmeDAO filmeDAO;
 	private boolean continuacao;
 	
 	public FilmeRN() {
 		setFilme(new Filme());
+		filmeDAO = DAOFactory.criarFilmeDAO();
 	}
 	
 	public boolean continuarInclusao(){
@@ -15,6 +19,12 @@ public class FilmeRN {
 		} else {
 			return continuacao = true;
 		}
+	}
+	
+	public void salvarReview() {
+		DAOFactory.beginTransaction();
+		filmeDAO.salvar(filme);
+		DAOFactory.commitTransaction();
 	}
 	
 	public void voltar(){

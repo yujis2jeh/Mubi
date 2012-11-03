@@ -43,7 +43,7 @@ public class UsuarioBean {
 		String senha = this.usuario.getSenha();
 		
 		if (!senha.equals(this.confirmaSenha)) {
-			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente.");
+			FacesMessage facesMessage = new FacesMessage("A senha nï¿½o foi confirmada corretamente.");
 			facesMessage.setSeverity(FacesMessage.SEVERITY_WARN);
 			context.addMessage(null, facesMessage);
 			return null;
@@ -57,7 +57,7 @@ public class UsuarioBean {
 				usuarioRN.salvar(this.usuario);		
 				return this.destinoSalvar;
 			} catch (ConstraintViolationException exception) {
-				FacesMessage message = new FacesMessage("O usuário já existe.");
+				FacesMessage message = new FacesMessage("O usuï¿½rio jï¿½ existe.");
 				message.setSeverity(FacesMessage.SEVERITY_WARN);
 				context.addMessage(null, message);
 				return null;

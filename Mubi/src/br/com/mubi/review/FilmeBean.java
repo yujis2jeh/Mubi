@@ -30,7 +30,7 @@ public class FilmeBean {
 	}
 
 	
-	public void validarContinuacao(){
+	public void validarContinuacao() {
 		boolean continuaInclusao;
 		continuaInclusao = filmeRN.continuarInclusao();
 		if(!continuaInclusao){
@@ -38,6 +38,10 @@ public class FilmeBean {
 			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Favor preencher todos os campos.", null);
 			facesContext.addMessage(null, facesMessage);
 		}
+	}
+	
+	public void salvarReview() {
+		filmeRN.salvarReview();
 	}
 
 	public List<ClassificacaoEtaria> getClassificacao() {

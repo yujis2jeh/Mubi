@@ -15,15 +15,20 @@ public class UsuarioRN {
 	}
 	
 	public Usuario carregar(Integer codigo) {
-		return this.usuarioDAO.carregar(codigo);
+		Usuario usuario;
+		usuario =  this.usuarioDAO.carregar(codigo);
+		return usuario;
 	}
 	
 	public Usuario buscarPorLogin(String login) {
-		return this.usuarioDAO.buscarPorLogin(login);
+		Usuario usuario;
+		usuario = this.usuarioDAO.buscarPorLogin(login);
+		return usuario;
 	}
 	
 	public void salvar(Usuario usuario) {
 		Integer codigo = usuario.getCodigo();
+		DAOFactory.beginTransaction();
 		if (codigo == null || codigo == 0) {
 			usuario.getPermissao().add("ROLE_USUARIO");
 			usuario.getPermissao().add("ROLE_ADMINISTRADOR");
@@ -32,14 +37,20 @@ public class UsuarioRN {
 			usuario.getPermissao();
 			this.usuarioDAO.atualizar(usuario);
 		}
+		DAOFactory.commitTransaction();
 	}
 	
 	public void excluir(Usuario usuario) {
+		DAOFactory.beginTransaction();
 		this.usuarioDAO.excluir(usuario);
+		DAOFactory.commitTransaction();
+		
 	}
 	
 	public List<Usuario> listar() {
-		return this.usuarioDAO.listar();
+		List<Usuario> usuarios;
+		usuarios =  this.usuarioDAO.listar();
+		return usuarios;
 	}
 	
 	public boolean validarCamposObrigatorios(Usuario usuario, FacesContext context) {
@@ -47,27 +58,27 @@ public class UsuarioRN {
 		
 		if(usuario.getNome().isEmpty()) {
 			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "Nome obrigatório", null));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Nome obrigatï¿½rio", null));
 			validacaoOk = false;
 		}
 		if(usuario.getNascimento() == null) {
 			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "Data de Nascimento obrigatória", null));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Data de Nascimento obrigatï¿½ria", null));
 			validacaoOk = false;
 		}
 		if(usuario.getLogin().isEmpty()) {
 			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuário obrigatório", null));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuï¿½rio obrigatï¿½rio", null));
 			validacaoOk = false;
 		}
 		if(usuario.getSenha().isEmpty()) {
 			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "Senha obrigatória", null));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Senha obrigatï¿½ria", null));
 			validacaoOk = false;
 		}
 		if(usuario.getEmail().isEmpty()) {
 			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "E-Mail obrigatório", null));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "E-Mail obrigatï¿½rio", null));
 			validacaoOk = false;
 		}
 		
