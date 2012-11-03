@@ -35,38 +35,34 @@
 						<f:selectItem itemValue="2" itemLabel="Usuário" />
 					</p:selectOneRadio>							
 				</h:panelGrid>
-			</h:form>
 			
-			<br /><br />
-			
-			<h:panelGrid rendered="false">
-				<p:galleria var="image" showCaptions="true" showOverlays="true">  
-    				<p:graphicImage />  
-    				    <p:galleriaOverlay title="Imagem">   
-    					</p:galleriaOverlay> 
-				</p:galleria> 
-			</h:panelGrid>
-			
-			<h:panelGrid rendered="true">
-				 <p:dataTable var="filme" value="" styleClass="tabela" rows="10">  
-			        <p:column headerText="Nome">  
-			            <h:outputText value="Os Mercenários 2" /> 
-			        </p:column>  
-			  
-			        <p:column headerText="Year">  
-			            <h:outputText value="2012" /> 
-			        </p:column>  
-			  
-			        <p:column headerText="Genêro">  
-			            <h:outputText value="Ação" />  
-			        </p:column>  
-			  
-			        <p:column headerText="Descrição">  
-			            <h:outputText value="" />  
-			        </p:column>  
-			    </p:dataTable>  
-			</h:panelGrid>
-									
+				<br /><br />
+				
+				<h:panelGrid rendered="false">
+					<p:galleria var="image" showCaptions="true" showOverlays="true">  
+	    				<p:graphicImage />  
+	    				    <p:galleriaOverlay title="Imagem">   
+	    					</p:galleriaOverlay> 
+					</p:galleria> 
+				</h:panelGrid>
+				
+				<h:panelGrid rendered="true">
+					 <p:dataTable var="filme" value="" styleClass="tabela" rows="10">  
+				        <p:column headerText="Nome">  
+				            <h:commandLink value="Os Mercenários 2" action="/review.jsf" /> 
+				        </p:column>  
+				  
+				        <p:column headerText="Year">  
+				            <h:outputText value="2012" /> 
+				        </p:column>  
+				  
+				        <p:column headerText="Genêro">  
+				            <h:outputText value="Ação" />  
+				        </p:column>  			  
+				    </p:dataTable>  
+				</h:panelGrid>
+				
+			</h:form>						
 		</ui:define>
 	</ui:composition>
 </html>

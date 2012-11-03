@@ -53,7 +53,8 @@ public class Filme {
 	@JoinColumn(name="codigo")
 	private Usuario usuario;
 	
-	
+	@Column(name = "nome_imagem")
+	private String nomeImagem;
 	
 	public long getId() {
 		return id;
@@ -126,6 +127,12 @@ public class Filme {
 	}
 	public void setSinopse(String sinopse) {
 		this.sinopse = sinopse;
+	}
+	public String getNomeImagem() {
+		return nomeImagem;
+	}
+	public void setNomeImagem(String nomeImagem) {
+		this.nomeImagem = nomeImagem;
 	}
 	
 }

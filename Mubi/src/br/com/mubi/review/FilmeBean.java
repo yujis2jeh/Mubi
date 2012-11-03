@@ -13,6 +13,7 @@ public class FilmeBean {
 	
 	private List<ClassificacaoEtaria> classificacao;
 	private FilmeRN filmeRN;
+	private Filme filmeSelecionado;
 	
 	public FilmeBean() {
 		carregarImagensClassificacao();
@@ -29,7 +30,6 @@ public class FilmeBean {
 		classificacao.add(new ClassificacaoEtaria("Maior de 18 anos", "classificacao18.png"));
 	}
 
-	
 	public void validarContinuacao() {
 		boolean continuaInclusao;
 		continuaInclusao = filmeRN.continuarInclusao();
@@ -58,6 +58,14 @@ public class FilmeBean {
 
 	public void setFilmeRN(FilmeRN filmeRN) {
 		this.filmeRN = filmeRN;
+	}
+
+	public Filme getFilmeSelecionado() {
+		return filmeSelecionado;
+	}
+
+	public void setFilmeSelecionado(Filme filmeSelecionado) {
+		this.filmeSelecionado = filmeSelecionado;
 	}	
 	
 }
